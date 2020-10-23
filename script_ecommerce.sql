@@ -17,7 +17,7 @@ USE `icar` ;
 -- -----------------------------------------------------
 -- Table `icar`.`Cliente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `icar`.`Cliente` (
+CREATE TABLE IF NOT EXISTS `icar`.`cliente` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(250) NOT NULL,
   `rg` VARCHAR(9) NULL,
@@ -35,16 +35,16 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- INSERT CLIENTES
 -- -----------------------------------------------------
-INSERT INTO `icar`.`Cliente`(`nome`,`rg`,`cpf`,`logradouro`,`numero`,`bairro`,`cep`,`cidade`,`uf`,`email`) VALUES('Clarice Gabriela Analu Almada', '459958689', '23561167373', 'Rua Nova', '646', 'Jardim Santo Inácio', '69306610', 'Cabo de Santo Agostinho', 'PE', 'clarice@publiout.com.br');
-INSERT INTO `icar`.`Cliente`(`nome`,`rg`,`cpf`,`logradouro`,`numero`,`bairro`,`cep`,`cidade`,`uf`,`email`) VALUES('Mateus Raimundo Caio Costa', '377314092', '59213164580', 'Rua Melvim Jones', '476', 'São Pedro', '69306610', 'Cabo de Santo Agostinho', 'RR', 'mmateusraimundocaiocosta@publiout.com.br');
-INSERT INTO `icar`.`Cliente`(`nome`,`rg`,`cpf`,`logradouro`,`numero`,`bairro`,`cep`,`cidade`,`uf`,`email`) VALUES('Renan Theo Marcos Vinicius Rocha', '239341375', '13502048622', 'Servidão Palmito', '466', 'Campeche', '88065095', 'Florianópolis', 'SC', 'renantheomarcosviniciusrocha-87@cruiser.com.br');
-INSERT INTO `icar`.`Cliente`(`nome`,`rg`,`cpf`,`logradouro`,`numero`,`bairro`,`cep`,`cidade`,`uf`,`email`) VALUES('Danilo Ian Campos', '110763592', '48569515308', 'Rua Paulina', '978', 'Senador Camará', '21843655', 'Rio de Janeiro', 'RJ', 'daniloiancampos__daniloiancampos@renatoseguros.com');
+INSERT INTO `icar`.`cliente`(`nome`,`rg`,`cpf`,`logradouro`,`numero`,`bairro`,`cep`,`cidade`,`uf`,`email`) VALUES('Clarice Gabriela Analu Almada', '459958689', '23561167373', 'Rua Nova', '646', 'Jardim Santo Inácio', '69306610', 'Cabo de Santo Agostinho', 'PE', 'clarice@publiout.com.br');
+INSERT INTO `icar`.`cliente`(`nome`,`rg`,`cpf`,`logradouro`,`numero`,`bairro`,`cep`,`cidade`,`uf`,`email`) VALUES('Mateus Raimundo Caio Costa', '377314092', '59213164580', 'Rua Melvim Jones', '476', 'São Pedro', '69306610', 'Cabo de Santo Agostinho', 'RR', 'mmateusraimundo@publiout.com.br');
+INSERT INTO `icar`.`cliente`(`nome`,`rg`,`cpf`,`logradouro`,`numero`,`bairro`,`cep`,`cidade`,`uf`,`email`) VALUES('Renan Theo Marcos Vinicius Rocha', '239341375', '13502048622', 'Servidão Palmito', '466', 'Campeche', '88065095', 'Florianópolis', 'SC', 'renantheomar@cruiser.com.br');
+INSERT INTO `icar`.`cliente`(`nome`,`rg`,`cpf`,`logradouro`,`numero`,`bairro`,`cep`,`cidade`,`uf`,`email`) VALUES('Danilo Ian Campos', '110763592', '48569515308', 'Rua Paulina', '978', 'Senador Camará', '21843655', 'Rio de Janeiro', 'RJ', 'daniloian@renatoseguros.com');
 
 
 -- -----------------------------------------------------
 -- Table `icar`.`Carro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `icar`.`Carro` (
+CREATE TABLE IF NOT EXISTS `icar`.`carro` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `modelo` VARCHAR(150) NOT NULL,
   `marca` VARCHAR(105) NOT NULL,
@@ -83,8 +83,8 @@ CREATE TABLE IF NOT EXISTS `icar`.`pedido` (
   `Cliente_id` INT NOT NULL,
   `Carro_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_pedido_Cliente_idx` (`Cliente_id` ASC) VISIBLE,
-  INDEX `fk_pedido_Carro1_idx` (`Carro_id` ASC) VISIBLE,
+  INDEX `fk_pedido_cliente_idx` (`cliente_id` ASC),
+  INDEX `fk_pedido_carro1_idx` (`carro_id` ASC),
   CONSTRAINT `fk_pedido_Cliente`
     FOREIGN KEY (`Cliente_id`)
     REFERENCES `mydb`.`Cliente` (`id`)
